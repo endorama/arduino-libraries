@@ -1,0 +1,19 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: arduino-libraries
+  labels:
+    app: arduino-libraries
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  tls: []
+  rules:
+    - host: libraries.oniudra.cc
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: arduino-libraries
+              servicePort: http

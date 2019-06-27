@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: arduino-libraries
+  labels:
+    app: arduino-libraries
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arduino-libraries
+  template:
+    metadata:
+      labels:
+        app: arduino-libraries
+    spec:
+      containers:
+        - name: endorama-arduino-libraries
+          image: endorama/arduino-libraries:1
+          imagePullPolicy: Always
